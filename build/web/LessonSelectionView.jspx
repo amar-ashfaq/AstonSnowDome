@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : LessonSelectionView
+    Created on : 23-Dec-2018, 00:11:33
+    Author     : Amar Ashfaq
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+  
+    <jsp:element name="text">
+        <jsp:attribute name="lang">EN</jsp:attribute>
+        
+        <jsp:body>
+            
+            <h1 style="font-family: cursive;">My Chosen Lessons</h1>
+            <p style="font-family: cursive;">Greetings, ${sessionScope.user}</p>
+            
+            <!--Creates the navigation bread crumb-->
+            <jsp:directive.include file="navigation.jspx"/>
+            
+            <!--Creates the table headers-->
+            <table border="1" style="background-color:ghostwhite;">
+                <tr>
+                    <th style="padding-left: 10px;padding-right: 10px;">Lesson Description</th>
+                    <th style="padding-left: 10px;padding-right: 10px;">Date</th>
+                    <th style="padding-left: 10px;padding-right: 10px;">Starting Time</th>
+                    <th style="padding-left: 10px;padding-right: 10px;">Ending Time</th>
+                    <th style="padding-left: 10px;padding-right: 10px;">Level</th>
+                </tr>
+                
+                <!--For each chosen lesson item, we output each corresponding field value-->
+                <c:forEach var="chosenLesson" items="${selected.items}">
+                    <form method="POST" action="/coursework/do/cancelLesson">
+                      <tr>                      
+                            <td><c:out value="${chosenLesson.value.description}"/></td>
+                            <td><c:out value="${chosenLesson.value.date}"/></td>
+                            <td><c:out value="${chosenLesson.value.startTime}"/></td>
+                            <td><c:out value="${chosenLesson.value.endTime}"/></td>
+                            <td><c:out value="${chosenLesson.value.level}"/></td>                     
+                            <td>
+                                <input type="hidden" name="cancelLesson_id" value="${chosenLesson.key}"/>
+                                <input type="submit" value="Cancel Lesson"/>
+                            </td>                       
+                        </tr>
+                    </form>
+                </c:forEach>              
+            </table>
+            <!--Here we include the 'footer.jspx' file-->
+            <jsp:directive.include file="footer.jspx"/>
+        </jsp:body>
+    </jsp:element>
+</jsp:root>

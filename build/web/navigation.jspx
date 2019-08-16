@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : navigation
+    Created on : 21-Dec-2018, 10:27:55
+    Author     : Amar Ashfaq
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+
+    <jsp:element name="text">
+        <jsp:attribute name="lang">EN</jsp:attribute>
+        
+        <jsp:body>
+        
+            <head>
+                <title>The Aston SnowDome</title>
+            </head>
+            
+            <!--creates the navigation bar menu, which will be included on most pages-->
+            <p>                
+                <a href="viewTimetable" style="padding-right: 15px;"><font size="4" color="black">View All Lessons  </font></a>
+                <a href="viewSelection" style="padding-right: 15px;"><font size="4" color="black">View My Selected Lessons  </font></a>
+                <a href="logOut" style="padding-right: 15px;"><font size="4" color="black">Logout</font></a>               
+            </p>
+            
+        </jsp:body>
+    </jsp:element>
+</jsp:root>
